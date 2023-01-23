@@ -5,3 +5,7 @@ stages:
     - if: '[ -f /run/cos/live_mode ] && [ -f /run/initramfs/live/livecd-cloud-config.yaml ]'
       commands:
         - systemd-cat -t elemental elemental-register --debug /run/initramfs/live/
+    - if: '[ -f /etc/reconfigSys ]'
+      commands:
+        - systemd-cat -t elemental elemental-register --debug /oem/registration
+        - rm /etc/reconfigSys
